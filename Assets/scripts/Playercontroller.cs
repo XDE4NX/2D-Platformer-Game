@@ -2,10 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Playercontroller : MonoBehaviour
 {
     public ScoreController ScoreController;
+    public GameOverController gameOverController;
     public Animator animator;
 
     public float speed;
@@ -18,6 +20,15 @@ public class Playercontroller : MonoBehaviour
         Debug.Log("Player collison Awake");
         rig2d = gameObject.GetComponent<Rigidbody2D>();
     }
+
+    public void KillPlayer()
+    {
+        Debug.Log("killed");
+        //Destroy(gameObject);
+        gameOverController.PlayerDied();
+        this.enabled = false;
+    }
+
 
     private void Update()
     {
